@@ -1,22 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import MenuIcon from "@material-ui/icons/Menu";
-import { AppBar, IconButton, Toolbar } from "@material-ui/core";
+import { AppBar, createStyles, Drawer, IconButton, makeStyles, Theme, Toolbar } from "@material-ui/core";
 import { Button, Typography } from "@material-ui/core";
+import {Sidebar} from './SideBar';
 
+// ask stackoverflow 
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      flexGrow: 1,
+    },
+    menuButton: {
+      marginRight: theme.spacing(2),
+    },
+    title: {
+      flexGrow: 1,
+    },
+  })
+);
 
+export default function Header() { 
+ 
+  const [sideBar, setSideBar] = useState(false);
+  const classes = useStyles();
 
-
-export default function Header() {
+  const toggleSideBar = () => {
+      setSideBar(!sideBar);
+  };
+    
   return (
-    <div>
-      <AppBar position="static" >
+    <div className={classes.root}>
+      <AppBar position="static"  >
         <Toolbar>
 
-          <IconButton edge="start" color="inherit" aria-label="menu">
+          <IconButton  onClick={toggleSideBar} className={classes.menuButton} edge="start" color="inherit" aria-label="menu">
             <MenuIcon />
+            <Drawer anchor="left" open={sideBar} onClose={toggleSideBar}>
+            <Sidebar />
+            </Drawer>
           </IconButton>
 
-          <Typography variant="h6">News</Typography>
+          <Typography variant="h6" className={classes.title}>News</Typography>
 
           <Button color="inherit">Login</Button>
 
