@@ -4,13 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { ApolloClient, ApolloProvider, gql, InMemoryCache } from '@apollo/client';
 
 
 const graphQLClient = new ApolloClient({
   uri: "https://backenddatabase.azurewebsites.net/graphql/",
   cache: new InMemoryCache()
 });
+
+
+
 
 ReactDOM.render(
   <BrowserRouter>
