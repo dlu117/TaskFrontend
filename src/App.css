@@ -1,6 +1,12 @@
 .App {
   text-align: center;
- 
+  background-image: url("./Images/background.jpg");
+  background-size: cover;
+  min-width: 100%;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .App-logo {

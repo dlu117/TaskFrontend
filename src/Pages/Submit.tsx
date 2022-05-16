@@ -75,7 +75,7 @@ useEffect(() => {
       "year": "DATE_2022"
        } })
   }
-}, [data]);  //what is data???  usemutationhook fucntion call state change ???
+}, [data]);  //what is data???  usemutation hook fucntion call state change ???
   
 const handleSubmit = async() => {
     try{  

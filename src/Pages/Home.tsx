@@ -91,6 +91,7 @@ export const HomePage = () => {
           </CardHeader>     
             <CardContent >{d.description}</CardContent>
        </Card>
+       <br></br>
       </Grid>
       ))}
     </Grid>
