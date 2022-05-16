@@ -42,7 +42,7 @@ export default function Header() {
 
           <Typography variant="h6" className={classes.title}></Typography>
 
-          <Button color="inherit">Login</Button>
+          <Button color="inherit">Log Off</Button>
 
         </Toolbar>
       </AppBar>

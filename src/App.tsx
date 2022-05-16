@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "@material-ui/core";
 import Header from './Components/Header';
+import {Footer} from './Components/Footer';
 import "./App.css";
 import { Route, Routes} from 'react-router';
 import {SubmitPage} from './Pages/Submit';
@@ -19,6 +20,7 @@ function App() {
         <Route path="/submit" element={<SubmitPage/>} />
         <Route path="/home" element={<HomePage/>} />
       </Routes>
+     <Footer/>
     </div>
    
   );

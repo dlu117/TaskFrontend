@@ -9,8 +9,8 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import HomeIcon from "@material-ui/icons/Home";
-import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
-import AddBoxIcon from "@material-ui/icons/AddBox";
+import AddIcon from "@material-ui/icons/Add";
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const useStyles = makeStyles({
   list: {
@@ -38,18 +38,18 @@ export const Sidebar = () => {
         </ListItem>
         <ListItem button  href="/submit" component={Link}>
           <ListItemIcon>
-            <ArrowUpwardIcon />
+            <AddIcon />
           </ListItemIcon>
-          <ListItemText className={classes.listText} primary="Submit" />
+          <ListItemText className={classes.listText} primary="Add Task" />
         </ListItem>
       </List>
       <Divider />
       <List>
         <ListItem button>
           <ListItemIcon>
-            <AddBoxIcon />
+            <LogoutIcon />
           </ListItemIcon>
-          <ListItemText className={classes.listText} primary="Login" />
+          <ListItemText className={classes.listText} primary="Log off" />
         </ListItem>
       </List>
     </div>
