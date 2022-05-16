@@ -40,12 +40,13 @@ export default function Header() {
             </Drawer>
           </IconButton>
 
-          <Typography variant="h6" className={classes.title}>News</Typography>
+          <Typography variant="h6" className={classes.title}></Typography>
 
           <Button color="inherit">Login</Button>
 
         </Toolbar>
       </AppBar>
+      <br/>
     </div>
   );
 }
