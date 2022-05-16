@@ -67,7 +67,6 @@ export const SubmitPage = () => {
 
 useEffect(() => {
   if (data) {
-    console.log("printing");
     addTask({ variables: { 
       "personId": data.addPerson.id,
       "description":task,
