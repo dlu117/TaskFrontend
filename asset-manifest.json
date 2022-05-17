@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/TaskFrontend/static/css/main.cfa5e4d2.css",
+    "main.js": "/TaskFrontend/static/js/main.00b6e91b.js",
+    "static/media/background.jpg": "/TaskFrontend/static/media/background.3f4bd7d03b0133366d5f.jpg",
+    "static/media/github_logo.svg": "/TaskFrontend/static/media/github_logo.0ea941a1ab6d0a3efd5d0209c7d984f4.svg",
+    "index.html": "/TaskFrontend/index.html",
+    "main.cfa5e4d2.css.map": "/TaskFrontend/static/css/main.cfa5e4d2.css.map",
+    "main.00b6e91b.js.map": "/TaskFrontend/static/js/main.00b6e91b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cfa5e4d2.css",
+    "static/js/main.00b6e91b.js"
+  ]
+}
