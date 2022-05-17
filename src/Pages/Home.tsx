@@ -84,12 +84,11 @@ export const HomePage = () => {
             {d.person.name[0]}
           </Avatar>
           }
-
           action = {<Button><HighlightOffIcon color="action" onClick={()=>opendelete(d.id)}></HighlightOffIcon></Button>}
         >
           
-          </CardHeader>     
-            <CardContent >{d.description}</CardContent>
+         </CardHeader>     
+         <CardContent >{d.description}</CardContent>
        </Card>
        <br></br>
       </Grid>
@@ -98,10 +97,10 @@ export const HomePage = () => {
   <Grid>
   <Dialog open = {deleteStatus} onClose={canceldelete}>
   <DialogTitle> Are you sure you want to delete task?</DialogTitle>
-          <DialogContent>
-            <Button onClick = {handledelete} ><Typography>YES</Typography></Button>
-            <Button onClick = {canceldelete}><Typography>NO</Typography></Button>
-            </DialogContent>
+  <DialogContent>
+    <Button onClick = {handledelete} ><Typography>YES</Typography></Button>
+    <Button onClick = {canceldelete}><Typography>NO</Typography></Button>
+  </DialogContent>
 
   </Dialog>
   </Grid>

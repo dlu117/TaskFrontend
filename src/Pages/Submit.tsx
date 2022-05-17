@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Button, Card, Container, Grid, TextField, Typography } from "@material-ui/core";
+import { Button, Card, Container, DialogContent, Grid, TextField, Typography } from "@material-ui/core";
 import { gql, useMutation } from "@apollo/client";
+import DialogTitle from '@mui/material/DialogTitle';
+import Dialog from '@mui/material/Dialog';
+
 
 //graph ql query
 const Persons = gql`
@@ -43,11 +46,15 @@ export const SubmitPage = () => {
   const [addPerson, { data, loading, error }] = useMutation(Persons);
   const [addTask] = useMutation(Tasks);
   const [Name, setName] = useState<string>("");
-  const[task,setTask] = useState<string>("");
+  const[Task,setTask] = useState<string>("");
+  const[Description,setDescription] = useState<string>("");
+  const[Post, setPost] = useState<boolean>(false);
+  const[Message, setMessage] = useState<boolean>(false);
   
   if (loading) console.log("loading");
   if (error) console.log("error");
-  ///console.log(data)
+
+
 
 
 /*
@@ -69,47 +76,83 @@ useEffect(() => {
   if (data) {
     addTask({ variables: { 
       "personId": data.addPerson.id,
-      "description":task,
-      "name":"",
+      "description":Description,
+      "name":Task,
       "link":"",
       "year": "DATE_2022"
        } })
   }
 }, [data]);  //what is data???  usemutation hook fucntion call state change ???
   
-const handleSubmit = async() => {
+const handlePost = async() => {
+  if (Name !== "" && Task !== ""){
+    
     try{  
       await addPerson({ variables: {  
         "name":Name,
         "title":"",
         "imageURI":"" } })
       ;
+      setPost(true);
+      setTask("");
+      setName("");
+      setDescription("");
+      
     // console.log(data) data here is always undefined 
     // data is asynchronous data hasnt loaded when exceute this line
     // since this function will reload will state is changed data is loaded outside the function
     }
-    catch(e){console.log(e)}
-    
-  };
+    catch(e){
+      console.log(e)
+    }
+  }
+  else{
+    console.log();
+  }
+  setMessage(true);
+};
 
-  return( <Container className = "submit-form">
-          <Typography variant="h4">Submit Page</Typography>
+const readMessage = ()=>{
+  setMessage(false);
+};
+
+  return(<div><Container className = "post-form">
+         
           <Card>
           <br/>
           <Grid>
-          Name
-          <TextField label = "required" value ={Name} onChange={e => setName(e.target.value)}/>
+          <Typography>Name</Typography>
+        
+          <TextField  error = {Name === ""} label = "required" value ={Name} onChange={e => setName(e.target.value)}/>
+          <Typography>Task</Typography>
+        
+          <TextField label = "required" value ={Task} onChange={e => setTask(e.target.value)}/>
          
+          <br/>
+          <br/>
+          <Typography>Description</Typography>
+          <TextField multiline label = "Multiline" rows = {4} value = {Description} onChange={e => setDescription(e.target.value)} />
+          <br/>
+          <br/>
+          <Button variant="contained" onClick ={handlePost}>Post</Button> 
+          <br/>
+          <br/>
           </Grid>
-          
-          <br/>
-          <br/>
-          Task
-          <TextField multiline label = "Multiline" rows = {4} value = {task} onChange={e => setTask(e.target.value)} />
-          <Button onClick ={handleSubmit}>submit</Button> 
-          nom
-          <br/>
-          <br/>
           </Card>
           </Container>
+          <Dialog open={Message} onClose={readMessage}>
+          
+          {
+            Post?
+            <DialogTitle>Task has been posted !</DialogTitle> :  <DialogTitle>Error! Please make sure you fill Name and Task</DialogTitle>
+          }
+          
+          <DialogContent>
+          <Button variant="contained" onClick = {readMessage} ><Typography>Ok</Typography></Button>
+          <br/>
+          <br/>
+          </DialogContent>
+          
+          </Dialog>
+          </div> 
 )};   

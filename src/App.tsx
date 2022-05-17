@@ -6,7 +6,7 @@ import "./App.css";
 import { Route, Routes} from 'react-router';
 import {SubmitPage} from './Pages/Submit';
 import {HomePage} from './Pages/Home';
-
+import { LogoffPage } from "./Pages/Logoff";
 
 function App() {
   return (
@@ -19,7 +19,11 @@ function App() {
         <Route path="/" element={<HomePage/>} />
         <Route path="/submit" element={<SubmitPage/>} />
         <Route path="/home" element={<HomePage/>} />
+        <Route path="/exit" element={<LogoffPage/>} />
       </Routes>
+     <br/>
+     <br/>
+     <br/>
      <Footer/>
     </div>
    

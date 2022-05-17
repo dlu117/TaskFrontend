@@ -3,12 +3,14 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { AppBar, createStyles, Drawer, IconButton, makeStyles, Theme, Toolbar } from "@material-ui/core";
 import { Button, Typography } from "@material-ui/core";
 import {Sidebar} from './SideBar';
+import { Navigate } from "react-router-dom";
+
 
 // ask stackoverflow 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      flexGrow: 1,
+      flexGrow: 1
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -27,7 +29,7 @@ export default function Header() {
   const toggleSideBar = () => {
       setSideBar(!sideBar);
   };
-    
+
   return (
     <div className={classes.root}>
       <AppBar position="static"  >
@@ -42,7 +44,7 @@ export default function Header() {
 
           <Typography variant="h6" className={classes.title}></Typography>
 
-          <Button color="inherit">Log Off</Button>
+          <Button color="inherit" onClick = {()=>{<Navigate to = "/Logout"/>}}>Exit</Button>
 
         </Toolbar>
       </AppBar>
