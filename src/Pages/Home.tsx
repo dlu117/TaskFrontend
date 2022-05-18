@@ -7,8 +7,7 @@ import Dialog from '@mui/material/Dialog';
 import Header from '../Components/Header';
 
 
-
-import "./Home.css";
+import "./Styling/Home.css";
 
 const Tasks = gql`
   query GetDocuments {
@@ -42,16 +41,14 @@ export const HomePage = () => {
     const [DeleteTask] = useMutation(deleteTasks);
     const[deleteStatus,setdeleteStatus] = useState<boolean>(false);
     const[deleteid,setdeleteid] = useState<string>("");
-    const[homedata,sethomedata] = useState<string>("");
-     
     
-    
+
     // why does loading and error have to return something
     if (loading)  {
-      return <div> <Typography variant="h5">Loading Please wait, Refresh If It Takes Too Long</Typography></div>};
+      return <div> <Typography variant="h5">Loading Please wait, Refresh If It Takes Too Long...</Typography></div>};
 
     if (error)  {
-      return <div> <Typography variant="h5">Connection Error Try Again Later</Typography></div>};
+      return <div> <Typography variant="h5">Connection Error Please Refresh!</Typography></div>};
     
     console.log(data);
 
@@ -78,7 +75,7 @@ export const HomePage = () => {
     return(<div> 
       <Header/>
       <Grid className = "display" container 
-      spacing ={3} 
+      spacing ={2} 
       direction="row"
       justify="flex-start"
       alignItems="flex-start"

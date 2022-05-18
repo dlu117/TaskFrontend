@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, Card, Container, DialogContent, Grid, TextField, Typography } from "@material-ui/core";
+import { Box, Button, Card, CardContent, CardHeader, Container, DialogContent, Grid, TextField, Typography } from "@material-ui/core";
 import { gql, useMutation } from "@apollo/client";
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
 import Header from '../Components/Header';
 
-
+import "./Styling/Add.css";
 
 //graph ql query
 const Persons = gql`
@@ -123,30 +123,33 @@ const readMessage = ()=>{
   return(<div>
          <Header/>
          
-         <Container className = "post-form">
-         
+         <Grid container className = "postForm"
+          spacing={0}
+          direction="column"
+          alignItems="center"
+          justify="center"
+          style={{ minHeight: '50vh' }} >
+         <Grid xs ={9} md = {5} >
           <Card>
-          <br/>
-          <Grid>
-          <Typography>Name</Typography>
-        
-          <TextField  label = "required" value ={Name} onChange={e => setName(e.target.value)}/>
-          <Typography>Task</Typography>
-        
-          <TextField label = "required" value ={Task} onChange={e => setTask(e.target.value)}/>
-         
+          <CardHeader title ="Add New Task" />
+          <CardContent>
+          <br/>        
+          <TextField  label = "Name" helperText="Required Field" value ={Name} onChange={e => setName(e.target.value)}/>
           <br/>
           <br/>
-          <Typography>Description</Typography>
-          <TextField multiline label = "Multiline" rows = {4} value = {Description} onChange={e => setDescription(e.target.value)} />
+          <TextField label = "Task" helperText="Required Field" value ={Task} onChange={e => setTask(e.target.value)}/>
+          <br/>
+          <br/>
+          <TextField multiline label = "Description" rows = {4} value = {Description} onChange={e => setDescription(e.target.value)} />
           <br/>
           <br/>
           <Button variant="contained" onClick ={handlePost}>Post</Button> 
           <br/>
           <br/>
-          </Grid>
+          </CardContent>
           </Card>
-          </Container>
+          </Grid>
+          </Grid>
           <Dialog open={Message} onClose={readMessage}>
           
           {

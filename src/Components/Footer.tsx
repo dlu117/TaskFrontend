@@ -44,10 +44,8 @@ export const Footer = () => {
                 </Grid>
                 <Grid item xs={2}>
                         {GITHUB.map((icon: FooterIconProps) => {
-                            return (
-                                
-                                <FooterIcon key={icon.name} {...icon} />
-                                 
+                            return (                     
+                                <FooterIcon key={icon.name} {...icon} />            
                             )
                         })}
                     </Grid>

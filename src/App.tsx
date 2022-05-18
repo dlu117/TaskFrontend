@@ -3,9 +3,11 @@ import { Button } from "@material-ui/core";
 import Header from './Components/Header';
 import {Footer} from './Components/Footer';
 import { Route, Routes} from 'react-router';
-import {SubmitPage} from './Pages/Add';
+import {SubmitPage} from './Pages/Submit';
 import {HomePage} from './Pages/Home';
-import { LogoffPage } from "./Pages/Exit";
+import { LogoffPage } from "./Pages/Logout";
+import { LoginPage } from "./Pages/Login";
+
 
 import "./App.css";
 
@@ -17,7 +19,7 @@ function App() {
    
    
     <Routes>
-        <Route path="/" element={<HomePage/>} />
+        <Route path="/" element={<LoginPage/>} />
         <Route path="/submit" element={<SubmitPage/>} />
         <Route path="/home" element={<HomePage/>} />
         <Route path="/exit" element={<LogoffPage/>} />

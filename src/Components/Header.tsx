@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import MenuIcon from "@material-ui/icons/Menu";
-import { AppBar, createStyles, Drawer, IconButton, makeStyles, Theme, Toolbar } from "@material-ui/core";
+import { AppBar, createStyles, createTheme, Drawer, IconButton, makeStyles, Theme, Toolbar } from "@material-ui/core";
 import { Button, Typography } from "@material-ui/core";
 import {Sidebar} from './SideBar';
-import { Navigate } from "react-router-dom";
 
-
-// ask stackoverflow 
+ 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -21,6 +19,8 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+
+
 export default function Header() { 
  
   const [sideBar, setSideBar] = useState(false);
@@ -32,7 +32,7 @@ export default function Header() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static"  >
+      <AppBar position="static" style={{ background: '#2E3B55' }}  >
         <Toolbar>
 
           <IconButton  onClick={toggleSideBar} className={classes.menuButton} edge="start" color="inherit" aria-label="menu">
