@@ -45,11 +45,11 @@ export const Sidebar = () => {
       </List>
       <Divider />
       <List>
-        <ListItem button>
+        <ListItem button href="/exit" component={Link}>
           <ListItemIcon>
             <LogoutIcon />
           </ListItemIcon>
-          <ListItemText className={classes.listText} primary="Log off" />
+          <ListItemText className={classes.listText} primary="Exit" />
         </ListItem>
       </List>
     </div>

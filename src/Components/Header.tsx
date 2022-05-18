@@ -44,7 +44,7 @@ export default function Header() {
 
           <Typography variant="h6" className={classes.title}></Typography>
 
-          <Button color="inherit" onClick = {()=>{<Navigate to = "/Logout"/>}}>Exit</Button>
+          <Button color="inherit" href="/exit">Exit</Button>
 
         </Toolbar>
       </AppBar>

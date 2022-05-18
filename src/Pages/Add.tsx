@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Button, Card, Container, DialogContent, Grid, TextField, Typography } from "@material-ui/core";
+import { Box, Button, Card, Container, DialogContent, Grid, TextField, Typography } from "@material-ui/core";
 import { gql, useMutation } from "@apollo/client";
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
+import Header from '../Components/Header';
+
 
 
 //graph ql query
@@ -85,6 +87,8 @@ useEffect(() => {
 }, [data]);  //what is data???  usemutation hook fucntion call state change ???
   
 const handlePost = async() => {
+  setPost(false);
+
   if (Name !== "" && Task !== ""){
     
     try{  
@@ -116,14 +120,17 @@ const readMessage = ()=>{
   setMessage(false);
 };
 
-  return(<div><Container className = "post-form">
+  return(<div>
+         <Header/>
+         
+         <Container className = "post-form">
          
           <Card>
           <br/>
           <Grid>
           <Typography>Name</Typography>
         
-          <TextField  error = {Name === ""} label = "required" value ={Name} onChange={e => setName(e.target.value)}/>
+          <TextField  label = "required" value ={Name} onChange={e => setName(e.target.value)}/>
           <Typography>Task</Typography>
         
           <TextField label = "required" value ={Task} onChange={e => setTask(e.target.value)}/>
@@ -144,12 +151,12 @@ const readMessage = ()=>{
           
           {
             Post?
-            <DialogTitle>Task has been posted !</DialogTitle> :  <DialogTitle>Error! Please make sure you fill Name and Task</DialogTitle>
+            <DialogTitle>Task has been posted !</DialogTitle> :  <DialogTitle>Error! Please fill all required fields!</DialogTitle>
           }
-          
           <DialogContent>
+          <Box textAlign='center'>
           <Button variant="contained" onClick = {readMessage} ><Typography>Ok</Typography></Button>
-          <br/>
+          </Box>
           <br/>
           </DialogContent>
           

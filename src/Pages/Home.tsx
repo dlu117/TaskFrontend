@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Avatar, Typography, Card, Grid, CardMedia, CardHeader, CardContent, Button, DialogContent} from "@material-ui/core";
+import { Avatar, Typography, Card, Grid, CardMedia, CardHeader, CardContent, Button, DialogContent, Box} from "@material-ui/core";
 import { gql, useQuery, useMutation } from "@apollo/client";
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
+import Header from '../Components/Header';
+
 
 
 import "./Home.css";
@@ -40,6 +42,8 @@ export const HomePage = () => {
     const [DeleteTask] = useMutation(deleteTasks);
     const[deleteStatus,setdeleteStatus] = useState<boolean>(false);
     const[deleteid,setdeleteid] = useState<string>("");
+    const[homedata,sethomedata] = useState<string>("");
+     
     
     
     // why does loading and error have to return something
@@ -48,24 +52,32 @@ export const HomePage = () => {
 
     if (error)  {
       return <div> <Typography variant="h5">Connection Error Try Again Later</Typography></div>};
-     
+    
+    console.log(data);
+
     if(!error && !loading){
     }
     const handledelete = () =>{
+     console.log(deleteid);
      DeleteTask({variables:{"documentId":deleteid}});
      setdeleteStatus(false);
+     window.location.reload();
     }
     
     const opendelete =(id:any) =>{
       setdeleteStatus(true);
       setdeleteid(id);
+      console.log(id);
+  
     }
 
     const canceldelete =() =>{
       setdeleteStatus(false);
     }
   
-    return(<div> <Grid className = "display" container 
+    return(<div> 
+      <Header/>
+      <Grid className = "display" container 
       spacing ={3} 
       direction="row"
       justify="flex-start"
@@ -97,11 +109,15 @@ export const HomePage = () => {
   <Grid>
   <Dialog open = {deleteStatus} onClose={canceldelete}>
   <DialogTitle> Are you sure you want to delete task?</DialogTitle>
+  
   <DialogContent>
+    <Box textAlign='center'>
     <Button onClick = {handledelete} ><Typography>YES</Typography></Button>
+    
     <Button onClick = {canceldelete}><Typography>NO</Typography></Button>
+    </Box>
   </DialogContent>
-
+  
   </Dialog>
   </Grid>
   </div>
