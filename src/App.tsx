@@ -23,7 +23,7 @@ function App() {
         <Route path="/submit" element={<SubmitPage/>} />
         <Route path="/home" element={<HomePage/>} />
         <Route path="/exit" element={<LogoffPage/>} />
-      </Routes>
+    </Routes>
      <br/>
      <br/>
      <br/>

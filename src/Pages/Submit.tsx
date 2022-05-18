@@ -4,49 +4,14 @@ import { gql, useMutation } from "@apollo/client";
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
 import Header from '../Components/Header';
+import { ADDTASKS ,ADDPERSONS } from '../Api/mutations';
 
 import "./Styling/Add.css";
 
-//graph ql query
-const Persons = gql`
-  mutation AddPersons(
-    $name: String!,
-    $title:String!,
-    $imageURI:String!
-    ){
-    addPerson(input:{name:$name,title:$title,imageURI:$imageURI}){
-      id
-    } 
-    }
-`;
-
-const Tasks = gql`
-  mutation AddDocuments(
-    $personId: String!,
-    $description:String!
-    $name:String!,
-    $link:String!,
-    $year:String!
-    ){
-
-    addDocument(input:{
-      personId:$personId,
-      description:$description
-      name:$name,
-      link:$link,
-      year:$year
-    }){
-      id
-      name
-      description
-      link
-    } 
-    }
-`;
 
 export const SubmitPage = () => {
-  const [addPerson, { data, loading, error }] = useMutation(Persons);
-  const [addTask] = useMutation(Tasks);
+  const [addPerson, { data, loading, error }] = useMutation(ADDPERSONS);
+  const [addTask] = useMutation(ADDTASKS);
   const [Name, setName] = useState<string>("");
   const[Task,setTask] = useState<string>("");
   const[Description,setDescription] = useState<string>("");
@@ -84,7 +49,7 @@ useEffect(() => {
       "year": "DATE_2022"
        } })
   }
-}, [data]);  //what is data???  usemutation hook fucntion call state change ???
+}, [data]);  //what is data???  usemutation hook function call state change ???
   
 const handlePost = async() => {
   setPost(false);
@@ -102,7 +67,7 @@ const handlePost = async() => {
       setName("");
       setDescription("");
       
-    // console.log(data) data here is always undefined 
+    // console.log(data) data here is always undefined because
     // data is asynchronous data hasnt loaded when exceute this line
     // since this function will reload will state is changed data is loaded outside the function
     }

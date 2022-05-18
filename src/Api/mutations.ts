@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 import * as fragments from "./fragments";
 
-const Persons = gql`
+export const ADDPERSONS = gql`
   mutation AddPersons(
     $name: String!,
     $title:String!,
@@ -14,7 +14,7 @@ const Persons = gql`
     ${fragments.PERSON}
 `
 
-const Tasks = gql`
+export const ADDTASKS = gql`
   mutation AddDocuments(
     $personId: String!,
     $description:String!
@@ -36,7 +36,7 @@ const Tasks = gql`
     ${fragments.DOCUMENT}
 `
 
-const deleteTasks = gql`
+export const DELETETASKS = gql`
   mutation DeleteTask(
     $documentId: String!
     ){

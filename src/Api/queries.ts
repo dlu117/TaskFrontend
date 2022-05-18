@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 import * as fragments from "./fragments";
 
 
-const Tasks = gql`
+export const TASKS = gql`
   query GetDocuments {
     documents{
       nodes{

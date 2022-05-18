@@ -5,40 +5,16 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
 import Header from '../Components/Header';
-
+import { TASKS } from '../Api/queries';
+import { DELETETASKS } from '../Api/mutations';
 
 import "./Styling/Home.css";
 
-const Tasks = gql`
-  query GetDocuments {
-    documents{
-      nodes{
-        name
-        description
-        id
-        person{
-          name
-          id
-        }
-      }
-    } 
-    }
-`;
-
-const deleteTasks = gql`
-  mutation DeleteTask(
-    $documentId: String!
-    ){
-    deleteDocument(input:{documentId:$documentId}){
-      id
-      name
-    } 
-    }
-`;
 
 export const HomePage = () => {
-    const {loading, error, data} = useQuery(Tasks)
-    const [DeleteTask] = useMutation(deleteTasks);
+  
+    const {loading, error, data} = useQuery(TASKS)
+    const [DeleteTask] = useMutation(DELETETASKS);
     const[deleteStatus,setdeleteStatus] = useState<boolean>(false);
     const[deleteid,setdeleteid] = useState<string>("");
     
@@ -58,14 +34,13 @@ export const HomePage = () => {
      console.log(deleteid);
      DeleteTask({variables:{"documentId":deleteid}});
      setdeleteStatus(false);
+     console.log()
      window.location.reload();
     }
     
     const opendelete =(id:any) =>{
       setdeleteStatus(true);
       setdeleteid(id);
-      console.log(id);
-  
     }
 
     const canceldelete =() =>{
@@ -74,6 +49,7 @@ export const HomePage = () => {
   
     return(<div> 
       <Header/>
+
       <Grid className = "display" container 
       spacing ={2} 
       direction="row"
@@ -104,17 +80,17 @@ export const HomePage = () => {
       ))}
     </Grid>
   <Grid>
+
   <Dialog open = {deleteStatus} onClose={canceldelete}>
   <DialogTitle> Are you sure you want to delete task?</DialogTitle>
-  
   <DialogContent>
+
     <Box textAlign='center'>
     <Button onClick = {handledelete} ><Typography>YES</Typography></Button>
-    
     <Button onClick = {canceldelete}><Typography>NO</Typography></Button>
     </Box>
+
   </DialogContent>
-  
   </Dialog>
   </Grid>
   </div>
