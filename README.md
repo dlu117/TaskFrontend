@@ -7,7 +7,7 @@ App front end link: https://graphqlfrontend.netlify.app/
 
 ## Summary
 
-[We-Chat-Image-20220612162734.jpg](https://postimg.cc/0M4zrxFk)
+
 
 ##  Currrent Tasks 
 
