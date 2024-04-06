@@ -22,23 +22,6 @@ export const SubmitPage = () => {
   if (error) console.log("error");
 
 
-
-
-/*
- if (data ==== "undefined"){
- }
- else:  addTask({ variables: { 
-      "personId": data.addPerson.id,
-      "description":task,
-      "name":"",
-      "link":"",
-      "year": "DATE_2022"
-       } })
-      }}
-  // continusly fire because addTask is a state thus this if statement will always execute???
-  // console.log() prints only once 
-*/
-
 useEffect(() => {
   if (data) {
     addTask({ variables: { 
@@ -67,9 +50,6 @@ const handlePost = async() => {
       setName("");
       setDescription("");
       
-    // console.log(data) data here is always undefined because
-    // data is asynchronous data hasnt loaded when exceute this line
-    // since this function will reload will state is changed data is loaded outside the function
     }
     catch(e){
       console.log(e)

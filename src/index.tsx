@@ -8,11 +8,9 @@ import { ApolloClient, ApolloProvider, gql, InMemoryCache } from '@apollo/client
 
 
 const graphQLClient = new ApolloClient({
-  uri: "https://backenddatabase.azurewebsites.net/graphql/",
+  uri: "https://taskbackend.azurewebsites.net/graphql/",
   cache: new InMemoryCache()
 });
-
-
 
 
 ReactDOM.render(

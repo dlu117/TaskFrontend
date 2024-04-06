@@ -7,19 +7,18 @@ import Dialog from '@mui/material/Dialog';
 import Header from '../Components/Header';
 import { TASKS } from '../Api/queries';
 import { DELETETASKS } from '../Api/mutations';
+import  { Navigate } from 'react-router-dom'
 
 import "./Styling/Home.css";
 
 
 export const HomePage = () => {
-  
+
     const {loading, error, data} = useQuery(TASKS)
     const [DeleteTask] = useMutation(DELETETASKS);
     const[deleteStatus,setdeleteStatus] = useState<boolean>(false);
     const[deleteid,setdeleteid] = useState<string>("");
     
-
-    // why does loading and error have to return something
     if (loading)  {
       return <div> <Typography variant="h5">Loading Please wait, Refresh If It Takes Too Long...</Typography></div>};
 
@@ -34,8 +33,9 @@ export const HomePage = () => {
      console.log(deleteid);
      DeleteTask({variables:{"documentId":deleteid}});
      setdeleteStatus(false);
-     console.log()
-     window.location.reload();
+     console.log("here");
+     console.log(data);
+     //window.location.reload(); doesnt work 
     }
     
     const opendelete =(id:any) =>{
@@ -44,8 +44,10 @@ export const HomePage = () => {
     }
 
     const canceldelete =() =>{
-      setdeleteStatus(false);
+      setdeleteStatus(true);
     }
+
+  
   
     return(<div> 
       <Header/>
